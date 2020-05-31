@@ -1,0 +1,42 @@
+{
+  "version": "0.0.1",
+  "name": "vnikey",
+  "description": "Util for typing Vietnamese in VNI mode",
+  "homepage": "http://ndaidong.github.io/vnikey",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ndaidong/vnikey"
+  },
+  "author": "@ndaidong",
+  "main": "./dist/vnikey.js",
+  "module": "./src/main",
+  "jsnext:main": "./src/main",
+  "browser": "./dist/vnikey.min.js",
+  "engines": {
+     "node": ">= 10.14.2"
+  },
+  "scripts": {
+    "start": "http-server src -p 7777 -e html",
+    "lint": "eslint src tests",
+    "pretest": "npm run lint && npm run build",
+    "test": "jest --verbose --coverage=true --detectOpenHandles",
+    "build": "gccmin -e src/main.js -n vnikey -o dist -p package.json",
+    "reset": "node reset"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^7.7.0",
+    "bellajs": "^9.1.0",
+    "coveralls": "^3.1.0",
+    "eslint-config-goes": "^1.1.8",
+    "gcc-min": "^7.2.0",
+    "http-server": "^0.12.3",
+    "jest": "^26.0.1"
+  },
+  "keywords": [
+    "typing",
+    "vietnamese",
+    "language",
+    "util"
+  ],
+  "license": "MIT"
+}
