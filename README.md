@@ -60,7 +60,7 @@ import 'vnikey'
 
 ### Gecko based browsers (Firefox, SeaMonkey, etc)
 
-- [vnikey v0.0.6 for Gecko](https://github.com/ndaidong/vnikey/releases/download/v0.0.6/vnikey_v0.0.6_gecko.zip)
+- [vnikey for Gecko](https://addons.mozilla.org/en-US/firefox/addon/vnikey-for-gecco/)
 
 
 # Test
