@@ -1,6 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+  cursor: default;
+  font-family: sans-serif;
+  box-sizing: border-box;
+  font-display: optional;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a, a:link, a:visited {
+  color: #ff8;
+  cursor: pointer;
+  text-decoration: underline;
+}
 html, body {
   background-color: #333;
   font-size: 18px;
+}
+
+header {
+  padding: 20px 0px;
+  h1 {
+    font-size: 40px;
+    color: #fff;
+    text-align: center;
+  }
+}
+
+footer {
+  text-align: center;
+  hr {
+    border-top: dashed 1px #fff;
+    border-bottom: solid 1px #ccc;
+    width: 75%;
+    margin: auto;
+  }
+  .copyright {
+    padding: 20px;
+  }
+  a, a:link, a:visited {
+    text-decoration: none;
+    font-style: italic;
+  }
 }
 
 .container {
@@ -15,20 +57,23 @@ label, input, textarea, pre#editor {
   clear: both;
 }
 label {
+  display: block;
+  margin-top: 15px;
   font-size: 90%;
   color: #faa;
 }
 
 input, textarea {
   padding: 5px;
-  margin: 10px auto;
   background-color: #000;
   color: #fff;
+  font-size: 14px;
 }
 
 textarea {
   min-height: 100px;
 }
+
 pre#editor {
   padding: 5px;
   margin: auto;
@@ -39,11 +84,12 @@ pre#editor {
   border: inset 2px #ccc;
   background-color: #000;
   color: #fff;
-  font-size: 18px;
+  font-size: 14px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: normal;
 }
+
 #iframeEditor {
   padding: 0px;
   margin: auto;
