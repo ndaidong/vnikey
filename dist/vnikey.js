@@ -1,6 +1,6 @@
 /**
- * vnikey@0.0.7
- * built on: Sun, 31 May 2020 13:15:53 GMT
+ * vnikey@0.0.8
+ * built on: Sun, 31 May 2020 14:50:23 GMT
  * repository: https://github.com/ndaidong/vnikey
  * maintainer: @ndaidong
  * License: MIT
