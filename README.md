@@ -8,9 +8,11 @@ Small JavaScript library for typing Vietnamese diacritical marks in the web brow
 
 ### About `vnikey`
 
-`vnikey` is a shortened version of other Vietnamese typing libraries such as HIM, VIM, etc. It only supports VNI type mode (aka "Vietnamese number key based"). Personally I appreciate the intelligence and elegance of the VNI typing method. It's great to type English terms mixed with Vietnamese. But if you are already using TELEX or VIQR,  then `vnikey` is not for you.
+`vnikey` is a tool for typing Vietnamese, similar to other libraries as HIM, VIM, Mudim, etc. However `vnikey` supports only VNI type mode (aka "Vietnamese number key based"). Personally I appreciate the intelligence and elegance of the VNI typing method. It's great to type English terms mixed with Vietnamese. But if you are already using TELEX or VIQR,  then `vnikey` is not for you.
 
-`vnikey` also doesn't not provide the further features like "auto-correct spelling errors", "recover mistyped words", etc. There is the better tools for that.
+`vnikey` also doesn't not provide the further features like auto-correct spelling errors. There is the better tools for that.
+
+`vnikey` focus on the core feature: easy to type Vietnamese as long as English. It tries to avoid to place accent marks when you type something looks like English.
 
 ### About VNI typing method
 
