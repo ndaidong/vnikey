@@ -3,7 +3,7 @@
   "name": "vnikey for Gecko",
   "description": "Util that enables Vietnamese number key based on your web browser",
   "author": "@ndaidong",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "homepage_url": "https://github.com/ndaidong/vnikey",
   "icons": {
     "16": "icons/vni-16x16.png",
@@ -15,7 +15,8 @@
   "content_scripts": [
     {
       "matches": [
-        "<all_urls>"
+        "http://*/*",
+        "https://*/*"
       ],
       "all_frames": true,
       "run_at": "document_idle",
@@ -23,8 +24,5 @@
         "js/vnikey.js"
       ]
     }
-  ],
-  "permissions": [
-    "activeTab"
   ]
 }
