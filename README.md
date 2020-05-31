@@ -54,7 +54,7 @@ import 'vnikey'
 
 ### Webkit based browsers (Chrome, Vivaldi, Chomium, Opera, etc)
 
-- [vnikey v0.0.6 for Webkit](https://github.com/ndaidong/vnikey/releases/download/v0.0.6/vnikey_v0.0.6_webkit.zip)
+- [vnikey v0.0.7 for Webkit](https://github.com/ndaidong/vnikey/releases/download/v0.0.7/vnikey_v0.0.7_webkit.zip)
 
 ### Gecko based browsers (Firefox, SeaMonkey, etc)
 
