@@ -12,7 +12,7 @@ Small JavaScript library for typing Vietnamese diacritical marks in the web brow
 
 `vnikey` also doesn't not provide the further features like auto-correct spelling errors. There is the better tools for that.
 
-`vnikey` focus on the core feature: easy to type Vietnamese as long as English. It tries to avoid to place accent marks when you type something looks like English.
+`vnikey` focuses on the main purpose: easy to type Vietnamese as long as English. It tries to avoid to place accent marks when you type something looks like English.
 
 ### About VNI typing method
 
