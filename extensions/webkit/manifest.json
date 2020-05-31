@@ -3,7 +3,7 @@
   "name": "vnikey for Webkit",
   "description": "Util that enables Vietnamese number key based on your web browser",
   "author": "@ndaidong",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "homepage_url": "https://github.com/ndaidong/vnikey",
   "icons": {
     "256": "icons/vni-256x256.png",
