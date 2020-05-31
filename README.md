@@ -56,11 +56,11 @@ import 'vnikey'
 
 ### Webkit based browsers (Chrome, Vivaldi, Chomium, Opera, etc)
 
-- [vnkey for Webkit](https://github.com/ndaidong/vnikey/releases/download/v0.0.4/webkit.zip)
+- [vnkey v0.0.4 for Webkit](https://github.com/ndaidong/vnikey/releases/download/v0.0.4/vnkey_v0.0.4_webkit.zip)
 
 ### Gecco based browsers (Firefox, SeaMonkey, etc)
 
-- [vnkey for Gecco](https://github.com/ndaidong/vnikey/releases/download/v0.0.4/gecco.zip)
+- [vnkey v0.0.4 for Gecco](https://github.com/ndaidong/vnikey/releases/download/v0.0.4/vnkey_v0.0.4_gecco.zip)
 
 
 # Test
