@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "DEBUG=webrender:* PORT=7749 webren run ./web",
-    "release": "npm test && webren build ./web ./docs",
+    "release": "npm test && webren build ./web ./tmp",
+    "postrelease": "cp ./tmp/web/* ./docs && rm -rf ./tmp",
     "lint": "eslint src tests",
     "pretest": "npm run lint && npm run build",
     "test": "jest --verbose --coverage=true --detectOpenHandles",
