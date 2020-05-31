@@ -58,7 +58,7 @@ import 'vnikey'
 
 ### Gecko based browsers (Firefox, SeaMonkey, etc)
 
-- [vnikey for Gecko](https://addons.mozilla.org/en-US/firefox/addon/vnikey-for-gekco/)
+- [vnikey for Gecko](https://addons.mozilla.org/en-US/firefox/addon/vnikey-for-gecko/)
 
 
 # Test
