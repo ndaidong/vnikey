@@ -26,6 +26,10 @@ Basically VNI method uses the number keys from 1 to 9 to add diacritical marks t
 
 Thus, to get "Chào Việt Nam", we type "Chao2 Vie6t5 Nam".
 
+### Demo
+
+- https://ndaidong.github.io/vnikey
+
 
 ##  Embed `vnikey` into the web pages
 
