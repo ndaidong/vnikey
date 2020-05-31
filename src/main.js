@@ -230,8 +230,9 @@ const replaceAccent = (letter, keynum) => {
 
 const assignAccent = (keynum, letters, curpos) => {
   const {count, mark, endWithVowel} = getVowelInfo(letters);
+  const lim = Math.min(curpos, letters.length);
   if (mark > 0) {
-    for (let i = letters.length - 1; i >= 0; i--) {
+    for (let i = lim - 1; i >= 0; i--) {
       const char = letters[i];
       if (isVowelWithMark(char)) {
         const nextChar = letters[i + 1];
@@ -246,7 +247,7 @@ const assignAccent = (keynum, letters, curpos) => {
       }
     }
   } else if (count === 1) {
-    for (let i = letters.length - 1; i >= 0; i--) {
+    for (let i = lim - 1; i >= 0; i--) {
       const char = letters[i];
       if (isVowel(char)) {
         const replacement = replaceAccent(char, keynum);
@@ -259,7 +260,7 @@ const assignAccent = (keynum, letters, curpos) => {
   } else if (count === 2) {
     const word = letters.join('');
     if (!endWithVowel || word.startsWith('qu') || word.startsWith('gi')) {
-      for (let i = letters.length - 1; i >= 0; i--) {
+      for (let i = lim - 1; i >= 0; i--) {
         const char = letters[i];
         if (isVowel(char)) {
           const nextChar = letters[i + 1];
@@ -274,7 +275,7 @@ const assignAccent = (keynum, letters, curpos) => {
         }
       }
     } else {
-      for (let i = 0; i < letters.length; i++) {
+      for (let i = 0; i < lim; i++) {
         const char = letters[i];
         if (isVowel(char)) {
           const prevChar = letters[i - 1];
@@ -291,7 +292,7 @@ const assignAccent = (keynum, letters, curpos) => {
     }
   } else if (count === 3) {
     let ignored = false;
-    for (let i = letters.length - 1; i >= 0; i--) {
+    for (let i = lim - 1; i >= 0; i--) {
       const char = letters[i];
       if (isVowel(char)) {
         if (!ignored) {
