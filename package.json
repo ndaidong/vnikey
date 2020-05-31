@@ -1,5 +1,5 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "name": "vnikey",
   "description": "Util for typing Vietnamese in VNI mode",
   "homepage": "http://ndaidong.github.io/vnikey",
@@ -13,10 +13,11 @@
   "jsnext:main": "./src/main",
   "browser": "./dist/vnikey.min.js",
   "engines": {
-     "node": ">= 10.14.2"
+    "node": ">= 10.14.2"
   },
   "scripts": {
-    "start": "http-server src -p 7777 -e html",
+    "start": "DEBUG=webrender:* PORT=7749 webren run ./web",
+    "release": "npm test && webren build ./web ./docs",
     "lint": "eslint src tests",
     "pretest": "npm run lint && npm run build",
     "test": "jest --verbose --coverage=true --detectOpenHandles",
@@ -29,8 +30,8 @@
     "coveralls": "^3.1.0",
     "eslint-config-goes": "^1.1.8",
     "gcc-min": "^7.2.0",
-    "http-server": "^0.12.3",
-    "jest": "^26.0.1"
+    "jest": "^26.0.1",
+    "webrender": "^2.0.2"
   },
   "keywords": [
     "typing",

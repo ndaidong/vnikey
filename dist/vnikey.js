@@ -1,6 +1,6 @@
 /**
- * vnikey@0.0.1
- * built on: Sun, 31 May 2020 03:20:35 GMT
+ * vnikey@0.0.2
+ * built on: Sun, 31 May 2020 05:14:05 GMT
  * repository: https://github.com/ndaidong/vnikey
  * maintainer: @ndaidong
  * License: MIT
@@ -59,20 +59,23 @@
   }, []).join('');
   const vowelsWithAccent = [...vowels].slice(1).join('');
   const nonVN = [
-    'ab,acc,ad,ae,ann,al,ag,ar,as',
-    'br,bl',
-    'ck,cl,cr,cs,ct',
+    'ab,ace,act,ad,ae,ann,al,ag,ar,as',
+    'bb,br,bl',
+    'cc,ck,cl,cr,cs,ct',
+    'dr',
     'ed,eg,el,er,es,ex',
     'f',
-    'gl,gm,gr',
-    'ig,il',
+    'gl,gm,gn,gr',
+    'ig,il,ir',
     'j',
-    'nc,nd,np,nt,ns',
-    'od,ol,oo,or',
+    'kn,kr',
+    'nc,nd,nk,np,nt,ns',
+    'ocu,od,ol,oo,or',
     'pl,pr',
     'rd,rs,rt',
     'sp,st',
     'tb,tc,tt',
+    'ub,ul',
     'w',
     'z',
   ].join(',');
