@@ -54,9 +54,13 @@ import 'vnikey'
 
 ## Extensions for web browsers
 
-### Webkit based browsers
+### Webkit based browsers (Chrome, Vivaldi, Chomium, Opera, etc)
 
-### Mozilla Firefox
+- [vnkey for Webkit](https://github.com/ndaidong/vnikey/blob/master/extensions/webkit.zip)
+
+### Gecco based browsers (Firefox, SeaMonkey, etc)
+
+- [vnkey for Gecco](https://github.com/ndaidong/vnikey/blob/master/extensions/gecco.zip)
 
 
 # Test
