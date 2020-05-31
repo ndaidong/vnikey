@@ -438,7 +438,8 @@ export const findReplacer = (keynum, val, cursorPosition) => {
 // io logic & event handling
 
 const isTextInput = (tag) => {
-  return tag.nodeName === 'INPUT' && tag.getAttribute('type') === 'text';
+  const tagType = tag.getAttribute('type');
+  return tag.nodeName === 'INPUT' && (tagType === 'text' || tagType === 'search');
 };
 
 const isTextArea = (tag) => {

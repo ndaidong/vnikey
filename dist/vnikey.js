@@ -1,6 +1,6 @@
 /**
- * vnikey@0.0.4
- * built on: Sun, 31 May 2020 07:35:12 GMT
+ * vnikey@0.0.5
+ * built on: Sun, 31 May 2020 07:50:20 GMT
  * repository: https://github.com/ndaidong/vnikey
  * maintainer: @ndaidong
  * License: MIT
@@ -398,7 +398,8 @@
     };
   };
   const isTextInput = (tag) => {
-    return tag.nodeName === 'INPUT' && tag.getAttribute('type') === 'text';
+    const tagType = tag.getAttribute('type');
+    return tag.nodeName === 'INPUT' && (tagType === 'text' || tagType === 'search');
   };
   const isTextArea = (tag) => {
     return tag.nodeName === 'TEXTAREA';
