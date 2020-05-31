@@ -35,9 +35,7 @@ Thus, to get "Chào Việt Nam", we type "Chao2 Vie6t5 Nam".
 
 - CDN
 
-  - [vnikey.js](https://cdn.jsdelivr.net/npm/vnikey@latest/dist/vnikey.js)
-  - [vnikey.min.js](https://cdn.jsdelivr.net/npm/vnikey@latest/dist/vnikey.min.js)
-  - [vnikey.min.map](https://cdn.jsdelivr.net/npm/vnikey@latest/dist/vnikey.min.map)
+  - [vnikey.js](https://cdn.jsdelivr.net/npm/vnikey@latest)
 
 
 - NPM
