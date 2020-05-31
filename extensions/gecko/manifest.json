@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "vnikey for Gecco",
+  "name": "vnikey for Gecko",
   "description": "Util that enables Vietnamese number key based on your web browser",
   "author": "@ndaidong",
   "version": "0.0.5",
