@@ -473,12 +473,24 @@ const getCursorPosition = (input) => {
   return 'selectionStart' in input && document.activeElement === input ? input.selectionStart : -1;
 };
 
+
+const exitEvent = (evt) => {
+  evt.cancelBubble = true;
+  if (evt.stopPropagation) {
+    evt.stopPropagation();
+  }
+  if (evt.preventDefault) {
+    evt.preventDefault();
+  }
+  return false;
+};
+
 const updateText = (evt, replacement, curpos) => {
   const elm = evt.target;
   elm.value = replacement;
   elm.focus();
   elm.selectionEnd = curpos;
-  evt.preventDefault();
+  exitEvent(evt);
 };
 
 const updateRangeText = (evt, replacement, curpos, node, range) => {
@@ -486,7 +498,7 @@ const updateRangeText = (evt, replacement, curpos, node, range) => {
   node.deleteData(0, data.length);
   node.insertData(0, replacement);
   range.setStart(node, curpos);
-  evt.preventDefault();
+  exitEvent(evt);
 };
 
 const resolveRange = (evt, keynum) => {
@@ -508,7 +520,7 @@ const resolveRange = (evt, keynum) => {
     curpos,
   } = findReplacer(keynum, node.data, cursorPosition);
 
-  updateRangeText(evt, replacement, curpos, node, range);
+  return updateRangeText(evt, replacement, curpos, node, range);
 };
 
 const resolve = (evt, keycode) => {
@@ -532,7 +544,7 @@ const resolve = (evt, keycode) => {
     curpos,
   } = findReplacer(keynum, target.value, cursorPosition);
 
-  updateText(evt, replacement, curpos);
+  return updateText(evt, replacement, curpos);
 };
 
 const onKeyPress = (evt) => {
@@ -547,7 +559,9 @@ const registerEventListener = (element, evt, handler) => {
 
 const autoSetup = () => {
   registerEventListener(document, 'keypress', onKeyPress);
-  Array.from(document.getElementsByTagName('iframe')).forEach((frame) => {
+  Array.from(document.getElementsByTagName('iframe')).filter((frame) => {
+    return frame.src === '';
+  }).forEach((frame) => {
     const doc = frame.contentWindow.document;
     registerEventListener(doc, 'keypress', onKeyPress);
   });

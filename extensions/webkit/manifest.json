@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
   "name": "vnikey for Webkit",
-  "description": "Util that enables Vietnamese number key based on your web browser",
+  "description": "Enables Vietnamese number key based",
   "author": "@ndaidong",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "homepage_url": "https://github.com/ndaidong/vnikey",
   "icons": {
     "16": "icons/vni-16x16.png",
@@ -24,6 +24,5 @@
         "js/vnikey.js"
       ]
     }
-  ],
-  "offline_enabled": true
+  ]
 }
