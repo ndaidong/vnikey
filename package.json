@@ -1,7 +1,7 @@
 {
-  "version": "0.0.8",
+  "version": "0.0.9",
   "name": "vnikey",
-  "description": "Util for typing Vietnamese in VNI mode",
+  "description": "Enables Vietnamese number key based",
   "homepage": "http://ndaidong.github.io/vnikey",
   "repository": {
     "type": "git",

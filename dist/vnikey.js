@@ -1,6 +1,6 @@
 /**
- * vnikey@0.0.8
- * built on: Sun, 31 May 2020 14:50:23 GMT
+ * vnikey@0.0.9
+ * built on: Mon, 01 Jun 2020 01:06:18 GMT
  * repository: https://github.com/ndaidong/vnikey
  * maintainer: @ndaidong
  * License: MIT
@@ -426,19 +426,29 @@
   const getCursorPosition = (input) => {
     return 'selectionStart' in input && document.activeElement === input ? input.selectionStart : -1;
   };
+  const exitEvent = (evt) => {
+    evt.cancelBubble = true;
+    if (evt.stopPropagation) {
+      evt.stopPropagation();
+    }
+    if (evt.preventDefault) {
+      evt.preventDefault();
+    }
+    return false;
+  };
   const updateText = (evt, replacement, curpos) => {
     const elm = evt.target;
     elm.value = replacement;
     elm.focus();
     elm.selectionEnd = curpos;
-    evt.preventDefault();
+    exitEvent(evt);
   };
   const updateRangeText = (evt, replacement, curpos, node, range) => {
     const data = node.data;
     node.deleteData(0, data.length);
     node.insertData(0, replacement);
     range.setStart(node, curpos);
-    evt.preventDefault();
+    exitEvent(evt);
   };
   const resolveRange = (evt, keynum) => {
     const sel = getSelRange(evt);
@@ -455,7 +465,7 @@
       replacement,
       curpos,
     } = findReplacer(keynum, node.data, cursorPosition);
-    updateRangeText(evt, replacement, curpos, node, range);
+    return updateRangeText(evt, replacement, curpos, node, range);
   };
   const resolve = (evt, keycode) => {
     if (keycode < 49 || keycode > 57) {
@@ -474,7 +484,7 @@
       replacement,
       curpos,
     } = findReplacer(keynum, target.value, cursorPosition);
-    updateText(evt, replacement, curpos);
+    return updateText(evt, replacement, curpos);
   };
   const onKeyPress = (evt) => {
     const target = evt.target;
@@ -486,7 +496,9 @@
   };
   const autoSetup = () => {
     registerEventListener(document, 'keypress', onKeyPress);
-    Array.from(document.getElementsByTagName('iframe')).forEach((frame) => {
+    Array.from(document.getElementsByTagName('iframe')).filter((frame) => {
+      return frame.src === '';
+    }).forEach((frame) => {
       const doc = frame.contentWindow.document;
       registerEventListener(doc, 'keypress', onKeyPress);
     });
