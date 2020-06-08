@@ -50,17 +50,16 @@ And then:
 import 'vnikey'
 ```
 
+
 ## Extensions for web browsers
 
 ### Webkit based browsers (Chrome, Vivaldi, Chomium, Opera, etc)
 
-- [vnikey for Webkit]() (Pending Review)
-- [vnikey v0.0.9 for Webkit](https://github.com/ndaidong/vnikey/releases/download/v0.0.9/vnikey_v0.0.9_webkit.zip)
+- [vnikey for Webkit](https://chrome.google.com/webstore/detail/gipmmnagikfceadakmonbllelfjcmbam)
 
 ### Gecko based browsers (Firefox, SeaMonkey, etc)
 
 - [vnikey for Gecko](https://addons.mozilla.org/en-US/firefox/addon/vnikey-for-gecko/)
-- [vnikey v0.0.9 for Gecko](https://github.com/ndaidong/vnikey/releases/download/v0.0.9/vnikey_v0.0.9_gecko.zip)
 
 
 # Test
