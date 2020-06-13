@@ -1,5 +1,5 @@
 {
-  "version": "0.0.9",
+  "version": "0.2.0",
   "name": "vnikey",
   "description": "Enables Vietnamese number key based",
   "homepage": "http://ndaidong.github.io/vnikey",
@@ -26,13 +26,13 @@
     "reset": "node reset"
   },
   "devDependencies": {
-    "@testing-library/dom": "^7.7.0",
-    "bellajs": "^9.1.0",
+    "@testing-library/dom": "^7.13.0",
+    "bellajs": "^9.2.0",
     "coveralls": "^3.1.0",
     "eslint-config-goes": "^1.1.8",
     "gcc-min": "^7.2.0",
     "jest": "^26.0.1",
-    "webrender": "^2.0.2"
+    "webrender": "^2.0.4"
   },
   "keywords": [
     "typing",

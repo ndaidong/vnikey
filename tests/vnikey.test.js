@@ -340,3 +340,46 @@ describe('Test how vnikey handle key event', () => {
     expect(textarea.value).toBe(`co`);
   });
 });
+
+
+describe('Test how vnikey classify the input', () => {
+  it(`test if vnikey recognize text input element:`, () => {
+    const input1 = document.createElement('input');
+    document.body.appendChild(input1);
+    expect(vnikey.isInterested(input1)).toBe(true);
+
+    const input2 = document.createElement('input');
+    document.body.appendChild(input2);
+    input2.setAttribute('type', 'text');
+    expect(vnikey.isInterested(input2)).toBe(true);
+
+    const input3 = document.createElement('input');
+    document.body.appendChild(input3);
+    input3.setAttribute('type', 'search');
+    expect(vnikey.isInterested(input3)).toBe(true);
+  });
+
+  it(`test if vnikey recognize textarea element:`, () => {
+    const textarea = document.createElement('textarea');
+    document.body.appendChild(textarea);
+    expect(vnikey.isInterested(textarea)).toBe(true);
+  });
+
+  it(`test if vnikey recognize contentediable element:`, () => {
+    const div = document.createElement('div');
+    document.body.appendChild(div);
+    div.isContentEditable = true;
+    const isContenteditable = vnikey.isContentEditable(div);
+    expect(isContenteditable).toBe(true);
+  });
+
+  it(`test if vnikey recognize iframe element:`, () => {
+    const iframe = document.createElement('iframe');
+    document.body.appendChild(iframe);
+    const iframeDoc = iframe.contentWindow.document;
+    iframeDoc.designMode = 'on';
+    const tag = iframeDoc.body;
+    const isIframe = vnikey.isIframeEditor(tag);
+    expect(isIframe).toBe(true);
+  });
+});
