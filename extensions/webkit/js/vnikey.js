@@ -1,6 +1,6 @@
 /**
- * vnikey@0.0.9
- * built on: Mon, 01 Jun 2020 01:06:18 GMT
+ * vnikey@0.2.0
+ * built on: Sat, 13 Jun 2020 05:27:44 GMT
  * repository: https://github.com/ndaidong/vnikey
  * maintainer: @ndaidong
  * License: MIT
@@ -10,6 +10,24 @@
   typeof define === 'function' && define.amd ? define(['exports'], factory) :
   (global = global || self, factory(global.vnikey = {}));
 }(this, (function (exports) {
+  const isTextInput = (tag) => {
+    const tagType = tag.getAttribute('type') || 'text';
+    return tag.nodeName === 'INPUT' && (tagType === 'text' || tagType === 'search');
+  };
+  const isTextArea = (tag) => {
+    return tag.nodeName === 'TEXTAREA';
+  };
+  const isContentEditable = (tag) => {
+    return tag.nodeName !== 'BODY' && tag.isContentEditable;
+  };
+  const isIframeEditor = (tag) => {
+    return tag.nodeName === 'BODY' && tag.parentNode &&
+      tag.parentNode.parentNode && tag.parentNode.parentNode.designMode === 'on';
+  };
+  const isInterested = (tag) => {
+    return isTextInput(tag) || isTextArea(tag) || isIframeEditor(tag) || isContentEditable(tag);
+  };
+
   const MAX_WORD_LEN = 7;
   const upperPairArray = (pairs) => {
     return pairs.map((pair) => {
@@ -397,23 +415,7 @@
       curpos,
     };
   };
-  const isTextInput = (tag) => {
-    const tagType = tag.getAttribute('type');
-    return tag.nodeName === 'INPUT' && (tagType === 'text' || tagType === 'search');
-  };
-  const isTextArea = (tag) => {
-    return tag.nodeName === 'TEXTAREA';
-  };
-  const isContentEditable = (tag) => {
-    return tag.nodeName !== 'BODY' && tag.isContentEditable;
-  };
-  const isIframeEditor = (tag) => {
-    return tag.nodeName === 'BODY' && tag.parentNode &&
-      tag.parentNode.parentNode && tag.parentNode.parentNode.designMode === 'on';
-  };
-  const isInterested = (tag) => {
-    return isTextInput(tag) || isTextArea(tag) || isIframeEditor(tag) || isContentEditable(tag);
-  };
+
   const getSelRange = (evt) => {
     const target = evt.target;
     const sel = isContentEditable(target) ? window.getSelection() : (() => {
@@ -512,6 +514,9 @@
 
   exports.findReplacer = findReplacer;
   exports.init = init;
+  exports.isContentEditable = isContentEditable;
+  exports.isIframeEditor = isIframeEditor;
+  exports.isInterested = isInterested;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 
