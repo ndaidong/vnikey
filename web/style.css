@@ -90,10 +90,16 @@ pre#editor {
   white-space: normal;
 }
 
-#iframeEditor {
+.iframe-editor {
   padding: 0px;
   margin: auto;
   height: 100px;
   width: 480px;
   overflow: hidden;
+}
+
+.ctrl {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #ee6;
 }
