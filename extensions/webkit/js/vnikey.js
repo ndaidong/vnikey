@@ -1,6 +1,6 @@
 /**
- * vnikey@0.2.0
- * built on: Sat, 13 Jun 2020 05:27:44 GMT
+ * vnikey@0.3.0
+ * built on: Sun, 28 Jun 2020 14:22:04 GMT
  * repository: https://github.com/ndaidong/vnikey
  * maintainer: @ndaidong
  * License: MIT
@@ -498,12 +498,27 @@
   };
   const autoSetup = () => {
     registerEventListener(document, 'keypress', onKeyPress);
+    const applyEventListenerTo = (elm) => {
+      const doc = elm.contentWindow.document;
+      registerEventListener(doc, 'keypress', onKeyPress);
+      return elm;
+    };
     Array.from(document.getElementsByTagName('iframe')).filter((frame) => {
       return frame.src === '';
-    }).forEach((frame) => {
-      const doc = frame.contentWindow.document;
-      registerEventListener(doc, 'keypress', onKeyPress);
+    }).map(applyEventListenerTo);
+    const observer = new MutationObserver((mutationsList) => {
+      for (const mutation of mutationsList) {
+        Array.from(mutation.addedNodes).filter((node) => {
+          return node.tagName === 'IFRAME';
+        }).map(applyEventListenerTo);
+      }
     });
+    const config = {
+      attributes: false,
+      childList: true,
+      subtree: true,
+    };
+    observer.observe(document.body, config);
   };
   const init = () => {
     const rt = document.readyState;
