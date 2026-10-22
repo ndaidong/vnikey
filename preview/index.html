@@ -1,9 +1,9 @@
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport"content="width=device-width,initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>vnikey - Demo</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <header>
@@ -11,28 +11,31 @@
     </header>
     <div class="container">
       <label> Text input:</label>
-      <input type="text">
+      <input type="text" />
       <label> Text area:</label>
       <textarea class="txtbox" id="txtbox"></textarea>
       <label> Contenteditable element:</label>
       <pre id="editor" contenteditable></pre>
       <label> Iframe with designMode enabled:</label>
       <iframe id="iframeEditor" class="iframe-editor"></iframe>
-      <br><br>
+      <br /><br />
       <span class="ctrl" id="btn_add_editor">Add editor input area</span>
       <div id="new_editor_container"></div>
     </div>
     <footer>
-      <hr>
-        <div class="copyright">
-            <a href="https://twitter.com/@ndaidong" target="twitter">@ndaidong</a>
-        </div>
+      <hr />
+      <div class="copyright">
+        <a href="https://twitter.com/@ndaidong" target="twitter">@ndaidong</a>
+      </div>
     </footer>
     <script>
-      const editor = document.getElementById('iframeEditor').contentWindow.document;
-      editor.designMode = 'On';
+      const editor =
+        document.getElementById("iframeEditor").contentWindow.document;
+      editor.designMode = "On";
       editor.open();
-      editor.write('<html><head></head><body style="font-size: 16px; background-color: #000; color: #fff;"></body></html>');
+      editor.write(
+        '<html><head></head><body style="font-size: 16px; background-color: #000; color: #fff;"></body></html>',
+      );
       editor.close();
     </script>
     <script src="app.js"></script>

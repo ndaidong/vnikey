@@ -9,12 +9,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a, a:link, a:visited {
+a,
+a:link,
+a:visited {
   color: #ff8;
   cursor: pointer;
   text-decoration: underline;
 }
-html, body {
+html,
+body {
   background-color: #333;
   font-size: 18px;
 }
@@ -39,7 +42,9 @@ footer {
   .copyright {
     padding: 20px;
   }
-  a, a:link, a:visited {
+  a,
+  a:link,
+  a:visited {
     text-decoration: none;
     font-style: italic;
   }
@@ -51,7 +56,10 @@ footer {
   width: 100%;
   max-width: 480px;
 }
-label, input, textarea, pre#editor {
+label,
+input,
+textarea,
+pre#editor {
   width: 100%;
   margin: 10px auto;
   clear: both;
@@ -63,7 +71,8 @@ label {
   color: #faa;
 }
 
-input, textarea {
+input,
+textarea {
   padding: 5px;
   background-color: #000;
   color: #fff;
