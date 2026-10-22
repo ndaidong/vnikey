@@ -58,23 +58,28 @@ const vowelsWithAccent = [...vowels].slice(1).join("");
 
 const nonVN = [
   "ab,ace,act,ad,ae,ann,al,ag,ar,as",
-  "bb,br,bl",
+  "bb,bl,br,bs",
   "cc,ck,cl,cr,cs,ct",
   "dr",
-  "ed,eg,el,er,es,ex",
+  "ed,ee,eg,el,er,es,ex",
   "f",
-  "gl,gm,gn,gr",
+  "ght,gl,gm,gn,gr",
   "ig,il,ir",
   "j",
-  "kn,kr",
-  "nc,nd,nk,np,nt,ns",
+  "kl,kn,kr",
+  "ll,lw",
+  "mp",
+  "nc,nd,nk,nn,np,nt,ns",
   "ocu,od,ol,oo,or",
-  "pl,pr",
-  "rd,rs,rt",
-  "sp,st",
+  "pl,pp,pr",
+  "rd,rr,rs,rt",
+  "sp,ss,st",
   "tb,tc,tt",
   "ub,ul",
+  "vl",
   "w",
+  "xp",
+  "ya,ye,yo",
   "z",
 ].join(",");
 
@@ -193,7 +198,7 @@ const accentMap = {
 };
 
 const isNotVN = (word) => {
-  return allNonVN.some((x) => word.search(x) > -1);
+  return allNonVN.some((x) => word.indexOf(x) !== -1);
 };
 
 const isConsonant = (letter) => {
@@ -440,11 +445,16 @@ export const findReplacer = (keynum, val, cursorPosition) => {
   const activeWord = theWholeText.substring(leftPos, rightPos);
 
   const replaceWord = getReplacement(keynum, activeWord, relativePos);
+  const unchanged = activeWord + String(keynum);
 
   const replacement = [leftPart, ...replaceWord, rightPart].join("");
   const curpos = cursorPosition + replaceWord.length - activeWord.length;
   return {
     replacement,
     curpos,
+    transformed: replaceWord !== unchanged,
+    start: leftPos,
+    end: rightPos,
+    replaceWord,
   };
 };
