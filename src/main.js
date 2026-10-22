@@ -1,33 +1,33 @@
 /**
  * vnikey
  * @ndaidong
-**/
+ **/
 
 import {
   isContentEditable,
   isIframeEditor,
   isInterested,
-} from './validator.js';
+} from "./validator.js";
 
-import {
-  findReplacer,
-} from './rules.js';
-
+import { findReplacer } from "./rules.js";
 
 const getSelRange = (evt) => {
   const target = evt.target;
-  const sel = isContentEditable(target) ? window.getSelection() : (() => {
-    const doc = target.parentNode.parentNode;
-    const win = doc.defaultView || doc.parentWindow;
-    return win.getSelection();
-  })();
-  return sel ? sel.rangeCount > 0 ? sel : null : null;
+  const sel = isContentEditable(target)
+    ? window.getSelection()
+    : (() => {
+        const doc = target.parentNode.parentNode;
+        const win = doc.defaultView || doc.parentWindow;
+        return win.getSelection();
+      })();
+  return sel ? (sel.rangeCount > 0 ? sel : null) : null;
 };
 
 const getCursorPosition = (input) => {
-  return 'selectionStart' in input && document.activeElement === input ? input.selectionStart : -1;
+  return "selectionStart" in input && document.activeElement === input
+    ? input.selectionStart
+    : -1;
 };
-
 
 const exitEvent = (evt) => {
   evt.cancelBubble = true;
@@ -70,10 +70,11 @@ const resolveRange = (evt, keynum) => {
 
   const node = range.startContainer;
 
-  const {
-    replacement,
-    curpos,
-  } = findReplacer(keynum, node.data, cursorPosition);
+  const { replacement, curpos } = findReplacer(
+    keynum,
+    node.data,
+    cursorPosition,
+  );
 
   return updateRangeText(evt, replacement, curpos, node, range);
 };
@@ -94,10 +95,11 @@ const resolve = (evt, keycode) => {
     return false;
   }
 
-  const {
-    replacement,
-    curpos,
-  } = findReplacer(keynum, target.value, cursorPosition);
+  const { replacement, curpos } = findReplacer(
+    keynum,
+    target.value,
+    cursorPosition,
+  );
 
   return updateText(evt, replacement, curpos);
 };
@@ -113,21 +115,25 @@ const registerEventListener = (element, evt, handler) => {
 };
 
 const autoSetup = () => {
-  registerEventListener(document, 'keypress', onKeyPress);
+  registerEventListener(document, "keypress", onKeyPress);
   const applyEventListenerTo = (elm) => {
     const doc = elm.contentWindow.document;
-    registerEventListener(doc, 'keypress', onKeyPress);
+    registerEventListener(doc, "keypress", onKeyPress);
     return elm;
   };
-  Array.from(document.getElementsByTagName('iframe')).filter((frame) => {
-    return frame.src === '';
-  }).map(applyEventListenerTo);
+  Array.from(document.getElementsByTagName("iframe"))
+    .filter((frame) => {
+      return frame.src === "";
+    })
+    .map(applyEventListenerTo);
 
   const observer = new MutationObserver((mutationsList) => {
     for (const mutation of mutationsList) {
-      Array.from(mutation.addedNodes).filter((node) => {
-        return node.tagName === 'IFRAME';
-      }).map(applyEventListenerTo);
+      Array.from(mutation.addedNodes)
+        .filter((node) => {
+          return node.tagName === "IFRAME";
+        })
+        .map(applyEventListenerTo);
     }
   });
 
@@ -140,15 +146,15 @@ const autoSetup = () => {
   observer.observe(document.body, config);
 };
 
-
 export const init = () => {
   const rt = document.readyState;
-  const c = rt !== 'loading';
-  return c ? setTimeout(autoSetup, 0) : document.addEventListener('DOMContentLoaded', autoSetup);
+  const c = rt !== "loading";
+  return c
+    ? setTimeout(autoSetup, 0)
+    : document.addEventListener("DOMContentLoaded", autoSetup);
 };
 
-export * from './validator';
-export * from './rules';
+export * from "./validator";
+export * from "./rules";
 
 init();
-

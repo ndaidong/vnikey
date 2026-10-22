@@ -1,15 +1,14 @@
 // main.js
 
-import '../src/main.js';
-
+import "../src/main.js";
 
 const createEditor = (area) => {
-  area.innerHTML = '';
-  const ifr = document.createElement('iframe');
+  area.innerHTML = "";
+  const ifr = document.createElement("iframe");
   area.appendChild(ifr);
-  ifr.className = 'iframe-editor';
+  ifr.className = "iframe-editor";
   const editor = ifr.contentWindow.document;
-  editor.designMode = 'On';
+  editor.designMode = "On";
   editor.open();
   editor.write(`
     <html>
@@ -20,10 +19,9 @@ const createEditor = (area) => {
   editor.close();
 };
 
-
 const init = () => {
-  const btn = document.getElementById('btn_add_editor');
-  const area = document.getElementById('new_editor_container');
+  const btn = document.getElementById("btn_add_editor");
+  const area = document.getElementById("new_editor_container");
   btn.onclick = () => {
     return createEditor(area);
   };

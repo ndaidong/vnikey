@@ -8,6 +8,11 @@
     "url": "https://github.com/ndaidong/vnikey"
   },
   "author": "@ndaidong",
+  "scripts": {
+    "preview": "bun preview/index.html",
+    "build": "bun build.js",
+    "doc": "bun build --compile --target=browser ./preview/index.html --outdir=docs"
+  },
   "keywords": [
     "typing",
     "vietnamese",
