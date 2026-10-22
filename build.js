@@ -8,7 +8,7 @@ import { readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 
 const ROOT = import.meta.dir;
-const OUTDIR = join(ROOT, 'output', 'vnikey');
+const OUTDIR = join(ROOT, 'extension');
 
 const pkg = await Bun.file(join(ROOT, 'package.json')).json();
 
@@ -92,5 +92,5 @@ const outputs = [
   ...await copyIcons(),
 ];
 
-console.log(`Built vnikey@${pkg.version} -> output/vnikey`);
+console.log(`Built vnikey@${pkg.version} -> extension`);
 outputs.forEach((file) => console.log(`  ${file.replace(ROOT + '/', '')}`));
