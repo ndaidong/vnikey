@@ -2,16 +2,6 @@
 
 Browser extension for typing Vietnamese diacritical marks in the web browsers.
 
-## Install
-
-### Webkit based browsers (Chrome, Chomium, Brave, Vivaldi, Opera, etc)
-
-- [vnikey for Webkit](https://chrome.google.com/webstore/detail/gipmmnagikfceadakmonbllelfjcmbam)
-
-### Gecko based browsers (Firefox, LibreWolf, Waterfox, SeaMonkey, etc)
-
-- [vnikey for Gecko](https://addons.mozilla.org/en-US/firefox/addon/vnikey-for-gecko/)
-
 ### Limitations
 
 `vnikey` is an extension for typing Vietnamese, similar to other libraries as HIM, VIM, Mudim, etc. However `vnikey` supports only VNI type mode (aka "Vietnamese number key based"). Personally I appreciate the intelligence and elegance of the VNI typing method. It's great to type English terms mixed with Vietnamese. But if you are already using TELEX or VIQR, then `vnikey` is not for you.

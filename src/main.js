@@ -1,7 +1,7 @@
 /**
  * vnikey
  * @ndaidong
-**/
+ **/
 
 import {
   isContentEditable,
@@ -32,9 +32,10 @@ const getCursorPosition = (input) => {
 };
 
 const getNativeValueSetter = (elm) => {
-  const proto = elm instanceof HTMLTextAreaElement
-    ? HTMLTextAreaElement.prototype
-    : HTMLInputElement.prototype;
+  const proto =
+    elm instanceof HTMLTextAreaElement
+      ? HTMLTextAreaElement.prototype
+      : HTMLInputElement.prototype;
   const descriptor = Object.getOwnPropertyDescriptor(proto, "value");
   return descriptor ? descriptor.set : null;
 };
@@ -92,10 +93,10 @@ const updateRangeText = (node, start, end, replaceWord, curpos) => {
 
   // prefer execCommand so rich editors (Draft.js, ProseMirror, Quill, ...)
   // receive proper beforeinput/input events and keep their model in sync
-  let done = false;
+  let done;
   try {
     done = node.ownerDocument.execCommand("insertText", false, replaceWord);
-  } catch (err) {
+  } catch {
     done = false;
   }
 
@@ -129,13 +130,11 @@ const resolveRange = (evt, keynum) => {
     return false;
   }
   const cursorPosition = range.startOffset;
-  const {
-    start,
-    end,
-    replaceWord,
-    curpos,
-    transformed,
-  } = findReplacer(keynum, node.data, cursorPosition);
+  const { start, end, replaceWord, curpos, transformed } = findReplacer(
+    keynum,
+    node.data,
+    cursorPosition,
+  );
   if (!transformed) {
     return false;
   }
