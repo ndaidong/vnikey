@@ -79,7 +79,7 @@ const nonVN = [
   "vl",
   "w",
   "xp",
-  "ya,ye,yo",
+  "ya,yo",
   "z",
 ].join(",");
 

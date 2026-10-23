@@ -3,140 +3,131 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>vnikey - Demo</title>
+    
+  <style>/* preview/style.css */
+* {
+  cursor: default;
+  box-sizing: border-box;
+  font-display: optional;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
 
-    <style>
-      /* web/style.css */
-      * {
-        cursor: default;
-        box-sizing: border-box;
-        font-display: optional;
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        margin: 0;
-        padding: 0;
-        font-family: sans-serif;
-      }
+a, a:link, a:visited {
+  color: #ff8;
+  cursor: pointer;
+  text-decoration: underline;
+}
 
-      a,
-      a:link,
-      a:visited {
-        color: #ff8;
-        cursor: pointer;
-        text-decoration: underline;
-      }
+html, body {
+  background-color: #333;
+  font-size: 18px;
+}
 
-      html,
-      body {
-        background-color: #333;
-        font-size: 18px;
-      }
+header {
+  padding: 20px 0;
 
-      header {
-        padding: 20px 0;
+  & h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 40px;
+  }
+}
 
-        & h1 {
-          color: #fff;
-          text-align: center;
-          font-size: 40px;
-        }
-      }
+footer {
+  text-align: center;
 
-      footer {
-        text-align: center;
+  & hr {
+    border-top: 1px dashed #fff;
+    border-bottom: 1px solid #ccc;
+    width: 75%;
+    margin: auto;
+  }
 
-        & hr {
-          border-top: 1px dashed #fff;
-          border-bottom: 1px solid #ccc;
-          width: 75%;
-          margin: auto;
-        }
+  & .copyright {
+    padding: 20px;
+  }
 
-        & .copyright {
-          padding: 20px;
-        }
+  & a {
+    text-decoration: none;
+    font-style: italic;
+  }
 
-        & a {
-          text-decoration: none;
-          font-style: italic;
-        }
+  & a:link {
+    text-decoration: none;
+    font-style: italic;
+  }
 
-        & a:link {
-          text-decoration: none;
-          font-style: italic;
-        }
+  & a:visited {
+    text-decoration: none;
+    font-style: italic;
+  }
+}
 
-        & a:visited {
-          text-decoration: none;
-          font-style: italic;
-        }
-      }
+.container {
+  width: 100%;
+  max-width: 480px;
+  margin: 20px auto;
+  padding: 5px;
+}
 
-      .container {
-        width: 100%;
-        max-width: 480px;
-        margin: 20px auto;
-        padding: 5px;
-      }
+label, input, textarea, pre#editor {
+  clear: both;
+  width: 100%;
+  margin: 10px auto;
+}
 
-      label,
-      input,
-      textarea,
-      pre#editor {
-        clear: both;
-        width: 100%;
-        margin: 10px auto;
-      }
+label {
+  display: block;
+  color: #faa;
+  margin-top: 15px;
+  font-size: 90%;
+}
 
-      label {
-        display: block;
-        color: #faa;
-        margin-top: 15px;
-        font-size: 90%;
-      }
+input, textarea {
+  color: #fff;
+  background-color: #000;
+  padding: 5px;
+  font-size: 14px;
+}
 
-      input,
-      textarea {
-        color: #fff;
-        background-color: #000;
-        padding: 5px;
-        font-size: 14px;
-      }
+textarea {
+  min-height: 100px;
+}
 
-      textarea {
-        min-height: 100px;
-      }
+pre#editor {
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: #fff;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  background-color: #000;
+  border: 2px inset #ccc;
+  width: 480px;
+  height: 100px;
+  margin: auto;
+  padding: 5px;
+  font-size: 14px;
+}
 
-      pre#editor {
-        overflow-y: auto;
-        overflow-x: hidden;
-        color: #fff;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        white-space: normal;
-        background-color: #000;
-        border: 2px inset #ccc;
-        width: 480px;
-        height: 100px;
-        margin: auto;
-        padding: 5px;
-        font-size: 14px;
-      }
+.iframe-editor {
+  overflow: hidden;
+  width: 480px;
+  height: 100px;
+  margin: auto;
+  padding: 0;
+}
 
-      .iframe-editor {
-        overflow: hidden;
-        width: 480px;
-        height: 100px;
-        margin: auto;
-        padding: 0;
-      }
-
-      .ctrl {
-        cursor: pointer;
-        text-decoration: underline;
-        color: #ee6;
-      }
-    </style>
-  </head>
+.ctrl {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #ee6;
+}
+</style></head>
   <body>
     <header>
       <h1><a href="https://github.com/ndaidong/vnikey">vnikey</a></h1>
@@ -157,7 +148,7 @@
     <footer>
       <hr />
       <div class="copyright">
-        <a href="https://twitter.com/@ndaidong" target="twitter">@ndaidong</a>
+        <a href="https://x.com/@ndaidong" target="twitter">@ndaidong</a>
       </div>
     </footer>
     <script>
@@ -170,602 +161,618 @@
       );
       editor.close();
     </script>
+    
+  <script type="module">// src/validator.js
+var isTextInput = (tag) => {
+  const tagType = tag.getAttribute("type") || "text";
+  return tag.nodeName === "INPUT" && (tagType === "text" || tagType === "search");
+};
+var isTextArea = (tag) => {
+  return tag.nodeName === "TEXTAREA";
+};
+var isContentEditable = (tag) => {
+  return tag.nodeName !== "BODY" && tag.isContentEditable;
+};
+var isIframeEditor = (tag) => {
+  return tag.nodeName === "BODY" && tag.parentNode && tag.parentNode.parentNode && tag.parentNode.parentNode.designMode === "on";
+};
+var isInterested = (tag) => {
+  return isTextInput(tag) || isTextArea(tag) || isIframeEditor(tag) || isContentEditable(tag);
+};
 
-    <script type="module">
-      // src/validator.js
-      var isTextInput = (tag) => {
-        const tagType = tag.getAttribute("type") || "text";
-        return (
-          tag.nodeName === "INPUT" &&
-          (tagType === "text" || tagType === "search")
-        );
-      };
-      var isTextArea = (tag) => {
-        return tag.nodeName === "TEXTAREA";
-      };
-      var isContentEditable = (tag) => {
-        return tag.nodeName !== "BODY" && tag.isContentEditable;
-      };
-      var isIframeEditor = (tag) => {
-        return (
-          tag.nodeName === "BODY" &&
-          tag.parentNode &&
-          tag.parentNode.parentNode &&
-          tag.parentNode.parentNode.designMode === "on"
-        );
-      };
-      var isInterested = (tag) => {
-        return (
-          isTextInput(tag) ||
-          isTextArea(tag) ||
-          isIframeEditor(tag) ||
-          isContentEditable(tag)
-        );
-      };
-
-      // src/rules.js
-      var MAX_WORD_LEN = 7;
-      var upperPairArray = (pairs) => {
-        return pairs
-          .map((pair) => {
-            return [[...pair], [...pair.map((x) => x.toUpperCase())]];
-          })
-          .reduce((prev, curr) => {
-            return [...prev, ...curr];
-          }, []);
-      };
-      var transpose = (a) => {
-        return Object.keys(a[0]).map((c) => {
-          return a.map((r) => {
-            return r[c];
-          });
-        });
-      };
-      var consonants = "bcdđhgklmnpqrstvx";
-      var allConsonants = [consonants, consonants.toUpperCase()].join("");
-      var vowels = [
-        "aăâeêioôơuưy",
-        "áắấéếíóốớúứý",
-        "àằầèềìòồờùừỳ",
-        "ảẳẩẻểỉỏổởủửỷ",
-        "ãẵẫẽễĩõỗỡũữỹ",
-        "ạặậẹệịọộợụựỵ",
-      ];
-      var allVowels = [...vowels]
-        .map((queue) => {
-          return queue + queue.toUpperCase();
-        })
-        .map((queue) => {
-          return queue.split("");
-        })
-        .reduce((prev, curr) => {
-          return [...prev, ...curr];
-        }, [])
-        .join("");
-      var vowelsWithMark = [...vowels]
-        .map((row) => {
-          return [row[1], row[2], row[4], row[7], row[8], row[10]];
-        })
-        .reduce((prev, curr) => {
-          return [...prev, ...curr];
-        }, [])
-        .join("");
-      var vowelsWithAccent = [...vowels].slice(1).join("");
-      var nonVN = [
-        "ab,ace,act,ad,ae,ann,al,ag,ar,as",
-        "bb,br,bl",
-        "cc,ck,cl,cr,cs,ct",
-        "dr",
-        "ed,eg,el,er,es,ex",
-        "f",
-        "gl,gm,gn,gr",
-        "ig,il,ir",
-        "j",
-        "kn,kr",
-        "nc,nd,nk,np,nt,ns",
-        "ocu,od,ol,oo,or",
-        "pl,pr",
-        "rd,rs,rt",
-        "sp,st",
-        "tb,tc,tt",
-        "ub,ul",
-        "w",
-        "z",
-      ].join(",");
-      var allNonVN = [nonVN, nonVN.toUpperCase()].join(",").split(",");
-      var d9MapChar = {
-        d: "đ",
-        D: "Đ",
-      };
-      var k8Map = [...vowels]
-        .map((row) => {
-          return [
-            [row[0], row[1]],
-            [row[2], row[1]],
-            [row[0].toUpperCase(), row[1].toUpperCase()],
-            [row[2].toUpperCase(), row[1].toUpperCase()],
-          ];
-        })
-        .reduce((prev, curr) => {
-          return [...prev, ...curr];
-        }, []);
-      var k7Map = upperPairArray(
-        [
-          ["uo", "ươ"],
-          ["uô", "ươ"],
-          ["uó", "ướ"],
-          ["uố", "ướ"],
-          ["uò", "ườ"],
-          ["uồ", "ườ"],
-          ["uỏ", "ưở"],
-          ["uổ", "ưở"],
-          ["uõ", "ưỡ"],
-          ["uỗ", "ưỡ"],
-          ["uọ", "ượ"],
-          ["uộ", "ượ"],
-        ].concat(
-          [...vowels]
-            .map((row) => {
-              return [
-                [row[6], row[8]],
-                [row[7], row[8]],
-                [row[9], row[10]],
-              ];
-            })
-            .reduce((prev, curr) => {
-              return [...prev, ...curr];
-            }, []),
-        ),
-      );
-      var k6Map = upperPairArray(
-        [
-          ["uo", "uô"],
-          ["ươ", "uô"],
-          ["uó", "uố"],
-          ["ướ", "uố"],
-          ["uò", "uồ"],
-          ["ườ", "uồ"],
-          ["uỏ", "uổ"],
-          ["ưở", "uổ"],
-          ["uõ", "uỗ"],
-          ["ưỡ", "uỗ"],
-          ["uọ", "uộ"],
-          ["ượ", "uộ"],
-        ].concat(
-          [...vowels]
-            .map((row) => {
-              return [
-                [row[0], row[2]],
-                [row[1], row[2]],
-                [row[3], row[4]],
-                [row[6], row[7]],
-                [row[8], row[7]],
-              ];
-            })
-            .reduce((prev, curr) => {
-              return [...prev, ...curr];
-            }, []),
-        ),
-      );
-      var transposedVowels = transpose(
-        [...vowels].map((row) => {
-          return row.split("");
-        }),
-      );
-      var accentMap = {
-        1: upperPairArray(
-          [...transposedVowels].map((row) => {
-            return [[...row.slice(0, 1), ...row.slice(2)].join(""), row[1]];
-          }),
-        ),
-        2: upperPairArray(
-          [...transposedVowels].map((row) => {
-            return [[...row.slice(0, 2), ...row.slice(3)].join(""), row[2]];
-          }),
-        ),
-        3: upperPairArray(
-          [...transposedVowels].map((row) => {
-            return [[...row.slice(0, 3), ...row.slice(4)].join(""), row[3]];
-          }),
-        ),
-        4: upperPairArray(
-          [...transposedVowels].map((row) => {
-            return [[...row.slice(0, 4), ...row.slice(5)].join(""), row[4]];
-          }),
-        ),
-        5: upperPairArray(
-          [...transposedVowels].map((row) => {
-            return [[...row.slice(0, 5)].join(""), row[5]];
-          }),
-        ),
-      };
-      var isNotVN = (word) => {
-        return allNonVN.some((x) => word.search(x) > -1);
-      };
-      var isConsonant = (letter) => {
-        return letter && allConsonants.indexOf(letter) !== -1;
-      };
-      var isVowel = (letter) => {
-        return letter && allVowels.indexOf(letter) !== -1;
-      };
-      var isVowelWithMark = (letter) => {
-        return letter && vowelsWithMark.indexOf(letter) !== -1;
-      };
-      var isVowelWithAccent = (letter) => {
-        return letter && vowelsWithAccent.indexOf(letter) !== -1;
-      };
-      var isValidChar = (char) => {
-        return isConsonant(char) || isVowel(char);
-      };
-      var getVowelInfo = (letters = []) => {
-        const info = {
-          count: 0,
-          mark: 0,
-        };
-        for (const char of letters) {
-          if (isVowel(char)) {
-            info.count++;
-          }
-          if (isVowelWithMark(char)) {
-            info.mark++;
-          }
+// src/rules.js
+var MAX_WORD_LEN = 7;
+var upperPairArray = (pairs) => {
+  return pairs.map((pair) => {
+    return [[...pair], [...pair.map((x) => x.toUpperCase())]];
+  }).reduce((prev, curr) => {
+    return [...prev, ...curr];
+  }, []);
+};
+var transpose = (a) => {
+  return Object.keys(a[0]).map((c) => {
+    return a.map((r) => {
+      return r[c];
+    });
+  });
+};
+var consonants = "bcdđhgklmnpqrstvx";
+var allConsonants = [consonants, consonants.toUpperCase()].join("");
+var vowels = [
+  "aăâeêioôơuưy",
+  "áắấéếíóốớúứý",
+  "àằầèềìòồờùừỳ",
+  "ảẳẩẻểỉỏổởủửỷ",
+  "ãẵẫẽễĩõỗỡũữỹ",
+  "ạặậẹệịọộợụựỵ"
+];
+var allVowels = [...vowels].map((queue) => {
+  return queue + queue.toUpperCase();
+}).map((queue) => {
+  return queue.split("");
+}).reduce((prev, curr) => {
+  return [...prev, ...curr];
+}, []).join("");
+var vowelsWithMark = [...vowels].map((row) => {
+  return [row[1], row[2], row[4], row[7], row[8], row[10]];
+}).reduce((prev, curr) => {
+  return [...prev, ...curr];
+}, []).join("");
+var vowelsWithAccent = [...vowels].slice(1).join("");
+var nonVN = [
+  "ab,ace,act,ad,ae,ann,al,ag,ar,as",
+  "bb,bl,br,bs",
+  "cc,ck,cl,cr,cs,ct",
+  "dr",
+  "ed,ee,eg,el,er,es,ex",
+  "f",
+  "ght,gl,gm,gn,gr",
+  "ig,il,ir",
+  "j",
+  "kl,kn,kr",
+  "ll,lw",
+  "mp",
+  "nc,nd,nk,nn,np,nt,ns",
+  "ocu,od,ol,oo,or",
+  "pl,pp,pr",
+  "rd,rr,rs,rt",
+  "sp,ss,st",
+  "tb,tc,tt",
+  "ub,ul",
+  "vl",
+  "w",
+  "xp",
+  "ya,yo",
+  "z"
+].join(",");
+var allNonVN = [nonVN, nonVN.toUpperCase()].join(",").split(",");
+var d9MapChar = {
+  d: "đ",
+  D: "Đ"
+};
+var k8Map = [...vowels].map((row) => {
+  return [
+    [row[0], row[1]],
+    [row[2], row[1]],
+    [row[0].toUpperCase(), row[1].toUpperCase()],
+    [row[2].toUpperCase(), row[1].toUpperCase()]
+  ];
+}).reduce((prev, curr) => {
+  return [...prev, ...curr];
+}, []);
+var k7Map = upperPairArray([
+  ["uo", "ươ"],
+  ["uô", "ươ"],
+  ["uó", "ướ"],
+  ["uố", "ướ"],
+  ["uò", "ườ"],
+  ["uồ", "ườ"],
+  ["uỏ", "ưở"],
+  ["uổ", "ưở"],
+  ["uõ", "ưỡ"],
+  ["uỗ", "ưỡ"],
+  ["uọ", "ượ"],
+  ["uộ", "ượ"]
+].concat([...vowels].map((row) => {
+  return [
+    [row[6], row[8]],
+    [row[7], row[8]],
+    [row[9], row[10]]
+  ];
+}).reduce((prev, curr) => {
+  return [...prev, ...curr];
+}, [])));
+var k6Map = upperPairArray([
+  ["uo", "uô"],
+  ["ươ", "uô"],
+  ["uó", "uố"],
+  ["ướ", "uố"],
+  ["uò", "uồ"],
+  ["ườ", "uồ"],
+  ["uỏ", "uổ"],
+  ["ưở", "uổ"],
+  ["uõ", "uỗ"],
+  ["ưỡ", "uỗ"],
+  ["uọ", "uộ"],
+  ["ượ", "uộ"]
+].concat([...vowels].map((row) => {
+  return [
+    [row[0], row[2]],
+    [row[1], row[2]],
+    [row[3], row[4]],
+    [row[6], row[7]],
+    [row[8], row[7]]
+  ];
+}).reduce((prev, curr) => {
+  return [...prev, ...curr];
+}, [])));
+var transposedVowels = transpose([...vowels].map((row) => {
+  return row.split("");
+}));
+var accentMap = {
+  1: upperPairArray([...transposedVowels].map((row) => {
+    return [[...row.slice(0, 1), ...row.slice(2)].join(""), row[1]];
+  })),
+  2: upperPairArray([...transposedVowels].map((row) => {
+    return [[...row.slice(0, 2), ...row.slice(3)].join(""), row[2]];
+  })),
+  3: upperPairArray([...transposedVowels].map((row) => {
+    return [[...row.slice(0, 3), ...row.slice(4)].join(""), row[3]];
+  })),
+  4: upperPairArray([...transposedVowels].map((row) => {
+    return [[...row.slice(0, 4), ...row.slice(5)].join(""), row[4]];
+  })),
+  5: upperPairArray([...transposedVowels].map((row) => {
+    return [[...row.slice(0, 5)].join(""), row[5]];
+  }))
+};
+var isNotVN = (word) => {
+  return allNonVN.some((x) => word.indexOf(x) !== -1);
+};
+var isConsonant = (letter) => {
+  return letter && allConsonants.indexOf(letter) !== -1;
+};
+var isVowel = (letter) => {
+  return letter && allVowels.indexOf(letter) !== -1;
+};
+var isVowelWithMark = (letter) => {
+  return letter && vowelsWithMark.indexOf(letter) !== -1;
+};
+var isVowelWithAccent = (letter) => {
+  return letter && vowelsWithAccent.indexOf(letter) !== -1;
+};
+var isValidChar = (char) => {
+  return isConsonant(char) || isVowel(char);
+};
+var getVowelInfo = (letters = []) => {
+  const info = {
+    count: 0,
+    mark: 0
+  };
+  for (const char of letters) {
+    if (isVowel(char)) {
+      info.count++;
+    }
+    if (isVowelWithMark(char)) {
+      info.mark++;
+    }
+  }
+  const lastLetter = letters[letters.length - 1];
+  info.endWithVowel = allVowels.indexOf(lastLetter) >= 0;
+  return info;
+};
+var replaceAccent = (letter, keynum) => {
+  const accentKeyPairs = accentMap[keynum];
+  for (const pair of accentKeyPairs) {
+    if (pair[0].includes(letter)) {
+      return pair[1];
+    }
+  }
+  return letter;
+};
+var assignAccent = (keynum, letters, curpos) => {
+  const { count, mark, endWithVowel } = getVowelInfo(letters);
+  const lim = Math.min(curpos, letters.length);
+  if (mark > 0) {
+    for (let i = lim - 1;i >= 0; i--) {
+      const char = letters[i];
+      if (isVowelWithMark(char)) {
+        const nextChar = letters[i + 1];
+        if (isVowelWithAccent(nextChar)) {
+          break;
         }
-        const lastLetter = letters[letters.length - 1];
-        info.endWithVowel = allVowels.indexOf(lastLetter) >= 0;
-        return info;
-      };
-      var replaceAccent = (letter, keynum) => {
-        const accentKeyPairs = accentMap[keynum];
-        for (const pair of accentKeyPairs) {
-          if (pair[0].includes(letter)) {
-            return pair[1];
-          }
+        const replacement = replaceAccent(char, keynum);
+        if (replacement != char) {
+          letters[i] = replacement;
+          return letters.join("");
         }
-        return letter;
-      };
-      var assignAccent = (keynum, letters, curpos) => {
-        const { count, mark, endWithVowel } = getVowelInfo(letters);
-        const lim = Math.min(curpos, letters.length);
-        if (mark > 0) {
-          for (let i = lim - 1; i >= 0; i--) {
-            const char = letters[i];
-            if (isVowelWithMark(char)) {
-              const nextChar = letters[i + 1];
-              if (isVowelWithAccent(nextChar)) {
-                break;
-              }
-              const replacement = replaceAccent(char, keynum);
-              if (replacement != char) {
-                letters[i] = replacement;
-                return letters.join("");
-              }
-            }
-          }
-        } else if (count === 1) {
-          for (let i = lim - 1; i >= 0; i--) {
-            const char = letters[i];
-            if (isVowel(char)) {
-              const replacement = replaceAccent(char, keynum);
-              if (replacement != char) {
-                letters[i] = replacement;
-                return letters.join("");
-              }
-            }
-          }
-        } else if (count === 2) {
-          const word = letters.join("");
-          if (!endWithVowel || word.startsWith("qu") || word.startsWith("gi")) {
-            for (let i = lim - 1; i >= 0; i--) {
-              const char = letters[i];
-              if (isVowel(char)) {
-                const nextChar = letters[i + 1];
-                if (isVowelWithAccent(nextChar)) {
-                  break;
-                }
-                const replacement = replaceAccent(char, keynum);
-                if (replacement != char) {
-                  letters[i] = replacement;
-                  return letters.join("");
-                }
-              }
-            }
-          } else {
-            for (let i = 0; i < lim; i++) {
-              const char = letters[i];
-              if (isVowel(char)) {
-                const prevChar = letters[i - 1];
-                if (isVowelWithAccent(prevChar)) {
-                  break;
-                }
-                const replacement = replaceAccent(char, keynum);
-                if (replacement != char) {
-                  letters[i] = replacement;
-                  return letters.join("");
-                }
-              }
-            }
-          }
-        } else if (count === 3) {
-          let ignored = false;
-          for (let i = lim - 1; i >= 0; i--) {
-            const char = letters[i];
-            if (isVowel(char)) {
-              if (!ignored) {
-                ignored = true;
-                continue;
-              }
-              const replacement = replaceAccent(char, keynum);
-              if (replacement != char) {
-                letters[i] = replacement;
-                return letters.join("");
-              }
-            }
-          }
+      }
+    }
+  } else if (count === 1) {
+    for (let i = lim - 1;i >= 0; i--) {
+      const char = letters[i];
+      if (isVowel(char)) {
+        const replacement = replaceAccent(char, keynum);
+        if (replacement != char) {
+          letters[i] = replacement;
+          return letters.join("");
         }
-        letters.splice(curpos, 0, keynum);
-        return letters.join("");
-      };
-      var assignMark = (keynum, letters, curpos) => {
-        if (keynum === 8) {
-          for (const pair of k8Map) {
-            const origin = pair[0];
-            const transforming = pair[1];
-            for (let i = curpos - 1; i >= 0; i--) {
-              const achar = letters[i];
-              if (achar === origin) {
-                letters[i] = transforming;
-                return letters.join("");
-              }
-            }
-          }
-        } else if (keynum === 7) {
-          for (const pair of k7Map) {
-            const origin = pair[0];
-            const transforming = pair[1];
-            if (origin.length === 2) {
-              const word = letters.join("");
-              if (word.search(origin) > -1) {
-                return word.replace(origin, transforming);
-              }
-            } else {
-              for (let i = curpos - 1; i >= 0; i--) {
-                const achar = letters[i];
-                if (achar === origin) {
-                  letters[i] = transforming;
-                  return letters.join("");
-                }
-              }
-            }
-          }
-        } else if (keynum === 6) {
-          for (const pair of k6Map) {
-            const origin = pair[0];
-            const transforming = pair[1];
-            if (origin.length === 2) {
-              const word = letters.join("");
-              if (word.search(origin) > -1) {
-                return word.replace(origin, transforming);
-              }
-            } else {
-              for (let i = curpos - 1; i >= 0; i--) {
-                const achar = letters[i];
-                if (achar === origin) {
-                  letters[i] = transforming;
-                  return letters.join("");
-                }
-              }
-            }
-          }
-        }
-        letters.splice(curpos, 0, keynum);
-        return letters.join("");
-      };
-      var assignD = (keynum, letters, curpos) => {
-        if (letters[0] in d9MapChar) {
-          letters[0] = d9MapChar[letters[0]];
-        } else if (letters[curpos - 1] in d9MapChar) {
-          letters[curpos - 1] = d9MapChar[letters[curpos - 1]];
-        } else {
-          letters.splice(curpos, 0, keynum);
-        }
-        return letters.join("");
-      };
-      var getReplacement = (keynum, word, curpos) => {
-        const letters = word.split("");
-        if (curpos === 0 || word.length > MAX_WORD_LEN || isNotVN(word)) {
-          letters.splice(curpos, 0, keynum);
-        } else if (keynum === 9) {
-          return assignD(keynum, letters, curpos);
-        } else if ([8, 7, 6].includes(keynum)) {
-          return assignMark(keynum, letters, curpos);
-        } else if ([5, 4, 3, 2, 1].includes(keynum)) {
-          return assignAccent(keynum, letters, curpos);
-        }
-        return letters.join("");
-      };
-      var findReplacer = (keynum, val, cursorPosition) => {
-        const vleft = val.substring(0, cursorPosition);
-        const vright = val.substring(cursorPosition);
-        let leftPos = vleft.length;
-        for (let i = leftPos; i >= 0; i--) {
-          const char = vleft[i];
-          if (char && !isValidChar(char)) {
+      }
+    }
+  } else if (count === 2) {
+    const word = letters.join("");
+    if (!endWithVowel || word.startsWith("qu") || word.startsWith("gi")) {
+      for (let i = lim - 1;i >= 0; i--) {
+        const char = letters[i];
+        if (isVowel(char)) {
+          const nextChar = letters[i + 1];
+          if (isVowelWithAccent(nextChar)) {
             break;
           }
-          leftPos = i;
+          const replacement = replaceAccent(char, keynum);
+          if (replacement != char) {
+            letters[i] = replacement;
+            return letters.join("");
+          }
         }
-        let rightPos = 0;
-        for (let i = rightPos; i < vright.length; i++) {
-          const char = vright[i];
-          if (char && !isValidChar(char)) {
+      }
+    } else {
+      for (let i = 0;i < lim; i++) {
+        const char = letters[i];
+        if (isVowel(char)) {
+          const prevChar = letters[i - 1];
+          if (isVowelWithAccent(prevChar)) {
             break;
           }
-          rightPos = i + 1;
-        }
-        const relativePos = cursorPosition - leftPos;
-        rightPos += cursorPosition;
-        const theWholeText = [vleft, vright].join("");
-        const leftPart = theWholeText.substr(0, leftPos);
-        const rightPart = theWholeText.substr(rightPos, theWholeText.length);
-        const activeWord = theWholeText.substring(leftPos, rightPos);
-        const replaceWord = getReplacement(keynum, activeWord, relativePos);
-        const replacement = [leftPart, ...replaceWord, rightPart].join("");
-        const curpos = cursorPosition + replaceWord.length - activeWord.length;
-        return {
-          replacement,
-          curpos,
-        };
-      };
-
-      // src/main.js
-      var getSelRange = (evt) => {
-        const target = evt.target;
-        const sel = isContentEditable(target)
-          ? window.getSelection()
-          : (() => {
-              const doc = target.parentNode.parentNode;
-              const win = doc.defaultView || doc.parentWindow;
-              return win.getSelection();
-            })();
-        return sel ? (sel.rangeCount > 0 ? sel : null) : null;
-      };
-      var getCursorPosition = (input) => {
-        return "selectionStart" in input && document.activeElement === input
-          ? input.selectionStart
-          : -1;
-      };
-      var exitEvent = (evt) => {
-        evt.cancelBubble = true;
-        if (evt.stopPropagation) {
-          evt.stopPropagation();
-        }
-        if (evt.preventDefault) {
-          evt.preventDefault();
-        }
-        return false;
-      };
-      var updateText = (evt, replacement, curpos) => {
-        const elm = evt.target;
-        elm.value = replacement;
-        elm.focus();
-        elm.selectionEnd = curpos;
-        exitEvent(evt);
-      };
-      var updateRangeText = (evt, replacement, curpos, node, range) => {
-        const data = node.data;
-        node.deleteData(0, data.length);
-        node.insertData(0, replacement);
-        range.setStart(node, curpos);
-        exitEvent(evt);
-      };
-      var resolveRange = (evt, keynum) => {
-        const sel = getSelRange(evt);
-        if (!sel) {
-          return false;
-        }
-        const range = sel.getRangeAt(0);
-        const cursorPosition = range.startOffset;
-        if (cursorPosition != range.endOffset) {
-          return false;
-        }
-        const node = range.startContainer;
-        const { replacement, curpos } = findReplacer(
-          keynum,
-          node.data,
-          cursorPosition,
-        );
-        return updateRangeText(evt, replacement, curpos, node, range);
-      };
-      var resolve = (evt, keycode) => {
-        if (keycode < 49 || keycode > 57) {
-          return false;
-        }
-        const keynum = keycode - 48;
-        const target = evt.target;
-        if (isIframeEditor(target) || isContentEditable(target)) {
-          return resolveRange(evt, keynum);
-        }
-        const cursorPosition = getCursorPosition(evt.target);
-        if (cursorPosition === -1) {
-          return false;
-        }
-        const { replacement, curpos } = findReplacer(
-          keynum,
-          target.value,
-          cursorPosition,
-        );
-        return updateText(evt, replacement, curpos);
-      };
-      var onKeyPress = (evt) => {
-        const target = evt.target;
-        const keycode = evt.which || evt.keyCode;
-        return isInterested(target) ? resolve(evt, keycode) : false;
-      };
-      var registerEventListener = (element, evt, handler) => {
-        return element.addEventListener(evt, handler, false);
-      };
-      var autoSetup = () => {
-        registerEventListener(document, "keypress", onKeyPress);
-        const applyEventListenerTo = (elm) => {
-          const doc = elm.contentWindow.document;
-          registerEventListener(doc, "keypress", onKeyPress);
-          return elm;
-        };
-        Array.from(document.getElementsByTagName("iframe"))
-          .filter((frame) => {
-            return frame.src === "";
-          })
-          .map(applyEventListenerTo);
-        const observer = new MutationObserver((mutationsList) => {
-          for (const mutation of mutationsList) {
-            Array.from(mutation.addedNodes)
-              .filter((node) => {
-                return node.tagName === "IFRAME";
-              })
-              .map(applyEventListenerTo);
+          const replacement = replaceAccent(char, keynum);
+          if (replacement != char) {
+            letters[i] = replacement;
+            return letters.join("");
           }
-        });
-        const config = {
-          attributes: false,
-          childList: true,
-          subtree: true,
-        };
-        observer.observe(document.body, config);
-      };
-      var init = () => {
-        const rt = document.readyState;
-        const c = rt !== "loading";
-        return c
-          ? setTimeout(autoSetup, 0)
-          : document.addEventListener("DOMContentLoaded", autoSetup);
-      };
-      init();
+        }
+      }
+    }
+  } else if (count === 3) {
+    let ignored = false;
+    for (let i = lim - 1;i >= 0; i--) {
+      const char = letters[i];
+      if (isVowel(char)) {
+        if (!ignored) {
+          ignored = true;
+          continue;
+        }
+        const replacement = replaceAccent(char, keynum);
+        if (replacement != char) {
+          letters[i] = replacement;
+          return letters.join("");
+        }
+      }
+    }
+  }
+  letters.splice(curpos, 0, keynum);
+  return letters.join("");
+};
+var assignMark = (keynum, letters, curpos) => {
+  if (keynum === 8) {
+    for (const pair of k8Map) {
+      const origin = pair[0];
+      const transforming = pair[1];
+      for (let i = curpos - 1;i >= 0; i--) {
+        const achar = letters[i];
+        if (achar === origin) {
+          letters[i] = transforming;
+          return letters.join("");
+        }
+      }
+    }
+  } else if (keynum === 7) {
+    for (const pair of k7Map) {
+      const origin = pair[0];
+      const transforming = pair[1];
+      if (origin.length === 2) {
+        const word = letters.join("");
+        if (word.search(origin) > -1) {
+          return word.replace(origin, transforming);
+        }
+      } else {
+        for (let i = curpos - 1;i >= 0; i--) {
+          const achar = letters[i];
+          if (achar === origin) {
+            letters[i] = transforming;
+            return letters.join("");
+          }
+        }
+      }
+    }
+  } else if (keynum === 6) {
+    for (const pair of k6Map) {
+      const origin = pair[0];
+      const transforming = pair[1];
+      if (origin.length === 2) {
+        const word = letters.join("");
+        if (word.search(origin) > -1) {
+          return word.replace(origin, transforming);
+        }
+      } else {
+        for (let i = curpos - 1;i >= 0; i--) {
+          const achar = letters[i];
+          if (achar === origin) {
+            letters[i] = transforming;
+            return letters.join("");
+          }
+        }
+      }
+    }
+  }
+  letters.splice(curpos, 0, keynum);
+  return letters.join("");
+};
+var assignD = (keynum, letters, curpos) => {
+  if (letters[0] in d9MapChar) {
+    letters[0] = d9MapChar[letters[0]];
+  } else if (letters[curpos - 1] in d9MapChar) {
+    letters[curpos - 1] = d9MapChar[letters[curpos - 1]];
+  } else {
+    letters.splice(curpos, 0, keynum);
+  }
+  return letters.join("");
+};
+var getReplacement = (keynum, word, curpos) => {
+  const letters = word.split("");
+  if (curpos === 0 || word.length > MAX_WORD_LEN || isNotVN(word)) {
+    letters.splice(curpos, 0, keynum);
+  } else if (keynum === 9) {
+    return assignD(keynum, letters, curpos);
+  } else if ([8, 7, 6].includes(keynum)) {
+    return assignMark(keynum, letters, curpos);
+  } else if ([5, 4, 3, 2, 1].includes(keynum)) {
+    return assignAccent(keynum, letters, curpos);
+  }
+  return letters.join("");
+};
+var findReplacer = (keynum, val, cursorPosition) => {
+  const vleft = val.substring(0, cursorPosition);
+  const vright = val.substring(cursorPosition);
+  let leftPos = vleft.length;
+  for (let i = leftPos;i >= 0; i--) {
+    const char = vleft[i];
+    if (char && !isValidChar(char)) {
+      break;
+    }
+    leftPos = i;
+  }
+  let rightPos = 0;
+  for (let i = rightPos;i < vright.length; i++) {
+    const char = vright[i];
+    if (char && !isValidChar(char)) {
+      break;
+    }
+    rightPos = i + 1;
+  }
+  const relativePos = cursorPosition - leftPos;
+  rightPos += cursorPosition;
+  const theWholeText = [vleft, vright].join("");
+  const leftPart = theWholeText.substr(0, leftPos);
+  const rightPart = theWholeText.substr(rightPos, theWholeText.length);
+  const activeWord = theWholeText.substring(leftPos, rightPos);
+  const replaceWord = getReplacement(keynum, activeWord, relativePos);
+  const unchanged = activeWord + String(keynum);
+  const replacement = [leftPart, ...replaceWord, rightPart].join("");
+  const curpos = cursorPosition + replaceWord.length - activeWord.length;
+  return {
+    replacement,
+    curpos,
+    transformed: replaceWord !== unchanged,
+    start: leftPos,
+    end: rightPos,
+    replaceWord
+  };
+};
 
-      // web/app.js
-      var createEditor = (area) => {
-        area.innerHTML = "";
-        const ifr = document.createElement("iframe");
-        area.appendChild(ifr);
-        ifr.className = "iframe-editor";
-        const editor = ifr.contentWindow.document;
-        editor.designMode = "On";
-        editor.open();
-        editor.write(`
+// src/main.js
+var getDigit = (evt) => {
+  const key = evt.key;
+  return key && key >= "1" && key <= "9" ? Number(key) : -1;
+};
+var isSkippableEvent = (evt) => {
+  return evt.isComposing || evt.ctrlKey || evt.metaKey || evt.altKey;
+};
+var getWindowOf = (node) => {
+  const doc = node.ownerDocument || document;
+  return doc.defaultView || window;
+};
+var getCursorPosition = (input) => {
+  return "selectionStart" in input && document.activeElement === input ? input.selectionStart : -1;
+};
+var getNativeValueSetter = (elm) => {
+  const proto = elm instanceof HTMLTextAreaElement ? HTMLTextAreaElement.prototype : HTMLInputElement.prototype;
+  const descriptor = Object.getOwnPropertyDescriptor(proto, "value");
+  return descriptor ? descriptor.set : null;
+};
+var updateText = (elm, replacement, curpos) => {
+  const setter = getNativeValueSetter(elm);
+  if (setter) {
+    setter.call(elm, replacement);
+  } else {
+    elm.value = replacement;
+  }
+  elm.setSelectionRange(curpos, curpos);
+  elm.dispatchEvent(new InputEvent("input", {
+    bubbles: true,
+    data: replacement,
+    inputType: "insertText"
+  }));
+};
+var moveCursorBy = (win, delta) => {
+  if (!delta) {
+    return;
+  }
+  const sel = win.getSelection();
+  if (!sel || sel.rangeCount === 0) {
+    return;
+  }
+  const range = sel.getRangeAt(0);
+  const node = range.startContainer;
+  if (node.nodeType !== Node.TEXT_NODE) {
+    return;
+  }
+  const pos = Math.max(0, Math.min(node.length, range.startOffset + delta));
+  range.setStart(node, pos);
+  range.collapse(true);
+  sel.removeAllRanges();
+  sel.addRange(range);
+};
+var updateRangeText = (node, start, end, replaceWord, curpos) => {
+  const win = getWindowOf(node);
+  const sel = win.getSelection();
+  if (!sel || sel.rangeCount === 0) {
+    return false;
+  }
+  const range = sel.getRangeAt(0);
+  range.setStart(node, start);
+  range.setEnd(node, end);
+  sel.removeAllRanges();
+  sel.addRange(range);
+  let done;
+  try {
+    done = node.ownerDocument.execCommand("insertText", false, replaceWord);
+  } catch {
+    done = false;
+  }
+  if (done) {
+    moveCursorBy(win, curpos - (start + replaceWord.length));
+    return true;
+  }
+  node.deleteData(start, end - start);
+  node.insertData(start, replaceWord);
+  range.setStart(node, curpos);
+  range.collapse(true);
+  sel.removeAllRanges();
+  sel.addRange(range);
+  return true;
+};
+var resolveRange = (evt, keynum) => {
+  const doc = evt.target.ownerDocument || document;
+  const win = doc.defaultView || window;
+  const sel = win.getSelection();
+  if (!sel || sel.rangeCount === 0) {
+    return false;
+  }
+  const range = sel.getRangeAt(0);
+  if (range.startOffset !== range.endOffset) {
+    return false;
+  }
+  const node = range.startContainer;
+  if (node.nodeType !== Node.TEXT_NODE) {
+    return false;
+  }
+  const cursorPosition = range.startOffset;
+  const { start, end, replaceWord, curpos, transformed } = findReplacer(keynum, node.data, cursorPosition);
+  if (!transformed) {
+    return false;
+  }
+  return updateRangeText(node, start, end, replaceWord, curpos);
+};
+var resolveInput = (evt, keynum) => {
+  const elm = evt.target;
+  if (elm.readOnly || elm.disabled) {
+    return false;
+  }
+  const cursorPosition = getCursorPosition(elm);
+  if (cursorPosition === -1) {
+    return false;
+  }
+  const { replacement, curpos, transformed } = findReplacer(keynum, elm.value, cursorPosition);
+  if (!transformed) {
+    return false;
+  }
+  updateText(elm, replacement, curpos);
+  return true;
+};
+var resolve = (evt, keynum) => {
+  const target = evt.target;
+  if (isIframeEditor(target) || isContentEditable(target)) {
+    return resolveRange(evt, keynum);
+  }
+  return resolveInput(evt, keynum);
+};
+var onKeyDown = (evt) => {
+  if (isSkippableEvent(evt)) {
+    return false;
+  }
+  const keynum = getDigit(evt);
+  if (keynum === -1) {
+    return false;
+  }
+  const target = evt.target;
+  if (!isInterested(target)) {
+    return false;
+  }
+  if (!resolve(evt, keynum)) {
+    return false;
+  }
+  evt.preventDefault();
+  evt.stopPropagation();
+  return true;
+};
+var registerEventListener = (element, evt, handler) => {
+  return element.addEventListener(evt, handler, true);
+};
+var autoSetup = () => {
+  registerEventListener(document, "keydown", onKeyDown);
+  const applyEventListenerTo = (elm) => {
+    const doc = elm.contentWindow.document;
+    registerEventListener(doc, "keydown", onKeyDown);
+    return elm;
+  };
+  Array.from(document.getElementsByTagName("iframe")).filter((frame) => {
+    return frame.src === "";
+  }).map(applyEventListenerTo);
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      Array.from(mutation.addedNodes).filter((node) => {
+        return node.tagName === "IFRAME";
+      }).map(applyEventListenerTo);
+    }
+  });
+  const config = {
+    attributes: false,
+    childList: true,
+    subtree: true
+  };
+  observer.observe(document.body, config);
+};
+var init = () => {
+  const rt = document.readyState;
+  const c = rt !== "loading";
+  return c ? setTimeout(autoSetup, 0) : document.addEventListener("DOMContentLoaded", autoSetup);
+};
+init();
+
+// preview/app.js
+var createEditor = (area) => {
+  area.innerHTML = "";
+  const ifr = document.createElement("iframe");
+  area.appendChild(ifr);
+  ifr.className = "iframe-editor";
+  const editor = ifr.contentWindow.document;
+  editor.designMode = "On";
+  editor.open();
+  editor.write(`
     <html>
       <head></head>
       <body style="font-size: 16px; background-color: #000; color: #fff;">
       </body>
     </html>`);
-        editor.close();
-      };
-      var init2 = () => {
-        const btn = document.getElementById("btn_add_editor");
-        const area = document.getElementById("new_editor_container");
-        btn.onclick = () => {
-          return createEditor(area);
-        };
-      };
-      window.onload = init2;
-    </script>
-  </body>
+  editor.close();
+};
+var init2 = () => {
+  const btn = document.getElementById("btn_add_editor");
+  const area = document.getElementById("new_editor_container");
+  btn.onclick = () => {
+    return createEditor(area);
+  };
+};
+window.onload = init2;
+</script></body>
 </html>
